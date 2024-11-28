@@ -20,11 +20,11 @@ export function Login(){
         password.current=e.target.value;
     }
 
-    function loginClick(e){
-       const userFound= users.filter(user=>
+    function loginClick(){
+       const userFound1= users.find(user=>
             userid.current==user.UserId && password.current==user.Password
         );
-        if(userFound){
+        if(userFound1){
             setcookie('UserId',userid.current)
             alert('login succesfully');
             navigate('/user-dashboard');

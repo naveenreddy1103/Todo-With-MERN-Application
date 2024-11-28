@@ -9,10 +9,7 @@ import './todoindex.css'
 export function Userdashboard(){
     const [cookies,setcookie,removecookie]=useCookies(['UserId']);
     const [data,setdata]=useState([{Title:'',Description:'',date:'',AppoinmentId:0}]);
-    let id=useRef(null);
-    let title=useRef(null);
-    
-
+   
     function signOutClick(){
         alert(`${cookies['UserId']} signout successfully`);
         removecookie(['UserId']);
@@ -25,15 +22,11 @@ export function Userdashboard(){
         })
         
     },[]);
-    function removeClick(){
-        data.map(response=>{
-            id.current=response.AppoinmentId;
-            title.current=response.Title
-        })
-        console.log(id.current);
-        axios.delete(`http://127.0.0.1:1234/delete-appoinment/${id.current}`)
+    function removeClick(e){
+        
+        axios.delete(`http://127.0.0.1:1234/delete-appoinment/${e.target.id}`)
         .then(()=>{
-            alert(`${title.current} task removed`);
+            alert(`${e.target.value} task removed`);
             window.location.href = "http://localhost:3000/user-dashboard?"; 
         })
     }
@@ -57,7 +50,7 @@ export function Userdashboard(){
                     <p>{appoinment.Description}</p>
                     <p className="bi bi-calendar"> {appoinment.date.toString().slice(0,appoinment.date.toString().indexOf('T'))}</p>
                     <Link to={`/edit-appoinment/${appoinment.AppoinmentId}`} className="btn btn-primary mx-2 bi bi-pen-fill"> Edit</Link>
-                    <button className="btn btn-danger bi bi-trash-fill" onClick={removeClick}> Remove</button>
+                    <button className="btn btn-danger bi bi-trash-fill" value={appoinment.Title} id={appoinment.AppoinmentId} onClick={removeClick}> Remove</button>
                 </div>
                 )
             }
