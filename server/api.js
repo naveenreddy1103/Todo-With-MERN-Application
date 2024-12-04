@@ -1,7 +1,7 @@
 var express=require('express');
 var cors=require('cors');
 var app=express();
-var mongodbconnection="mongodb://localhost:27017/";
+var mongodbconnection="mongodb+srv://root:root@cluster-1.hlj6i.mongodb.net/";
 var mongodbClient=require('mongodb').MongoClient;
 app.use(cors());
 app.use(express.urlencoded({extended:true}));
