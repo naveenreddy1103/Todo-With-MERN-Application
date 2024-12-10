@@ -1,7 +1,9 @@
+import * as dotenv from 'dotenv';
+dotenv.config();
 var express=require('express');
 var cors=require('cors');
 var app=express();
-var mongodbconnection="mongodb+srv://root:root@cluster-1.hlj6i.mongodb.net/";
+var mongodbconnection=process.env.URI;
 var mongodbClient=require('mongodb').MongoClient;
 app.use(cors());
 app.use(express.urlencoded({extended:true}));
