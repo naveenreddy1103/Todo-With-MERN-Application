@@ -4,7 +4,7 @@ dotenv.config();
 var express=require('express');
 var cors=require('cors');
 var app=express();
-var mongodbconnection=process.env.URI;
+var mongodbconnection="mongodb+srv://root:root@cluster-1.hlj6i.mongodb.net/?retryWrites=true&w=majority&appName=Cluster-1";
 var mongodbClient=require('mongodb').MongoClient;
 app.use(cors());
 app.use(express.urlencoded({extended:true}));
@@ -129,4 +129,5 @@ app.delete('/delete-appoinment/:appoinmentid',(req,res)=>{
 })
 
 app.listen(1234);
+console.log(process.env.URI)
 console.log('server created http://127.0.0.1:1234');
