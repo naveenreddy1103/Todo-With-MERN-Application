@@ -42,11 +42,14 @@ export function Register(){
        navigate('/login');
        
     }
+    function formsubmit(e){
+        e.preventDefault();
+    }
 
 
     return(<div className="container-fluid d-flex justify-content-center  " >
         
-        <form className="mt-3 p-5 rounded rounded bg-white text-black">
+        <form className="mt-3 p-5 rounded rounded bg-white text-black" onSubmit={formsubmit}>
             <h3 className="bi bi-person-fill"> User Register</h3>
             <dl>
                 <dt>User Id</dt>
